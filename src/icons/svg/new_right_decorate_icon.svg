@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="49px" height="3px" viewBox="0 0 49 3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63 (92445) - https://sketch.com -->
+    <title>装饰1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="97.3659206%" y1="0%" x2="0%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#0D102D" stop-opacity="0.1" offset="0%"></stop>
+            <stop stop-color="#29E3FD" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页备份-4" transform="translate(-224.000000, -249.000000)">
+            <g id="装饰1" transform="translate(224.000000, 249.000000)">
+                <circle id="椭圆形备份-10" fill="#29E3FD" cx="1.5" cy="1.5" r="1.5"></circle>
+                <circle id="椭圆形备份-6" fill="#29E3FD" cx="6.5" cy="1.5" r="1.5"></circle>
+                <line x1="49" y1="1.5" x2="7" y2="1.5" id="路径-5备份-6" stroke="url(#linearGradient-1)" stroke-width="2"></line>
+            </g>
+        </g>
+    </g>
+</svg>

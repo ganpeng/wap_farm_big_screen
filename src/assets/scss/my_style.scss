@@ -1,0 +1,22 @@
+html, body {
+  font-size: 0.14rem;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+}
+
+/****
+  所有的背景图片样式
+****/
+.bg-icon1 {
+  background-image: url('../image/new_left_decorate_icon.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+
+.bg-icon2 {
+  background-image: url('../image/new_right_decorate_icon.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+}

@@ -1,0 +1,80 @@
+// 样式的初始化
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+html, body, div, section, header, footer, aside, ul, ol, li, table, tr, th, td, button, input, textarea, select, h1, h2, h3, h4, h5, h6, em, i, strong, p, span, blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, em, th, i, strong, input, textarea, button, select {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 100%;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+ul, ol {
+  list-style: none;
+  vertical-align: top;
+}
+
+li {
+  list-style-type: none;
+}
+
+table, td, th {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input, button, select, textarea {
+  outline: none;
+  background: none;
+}
+
+input:-webkit-autofill {
+  background-color: #ffffff !important;
+}
+
+textarea {
+  resize: none;
+}
+
+img, a img {
+  border: none;
+  vertical-align: top;
+}
+
+a, a:link, a:active, a:visited {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+  color: #666;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: #A3D0FD !important;
+}
+
+// 视频播放器样式重置
+.vjs-modal-dialog-content {
+  display: none!important;
+}
+.vjs-error .vjs-error-display:before {
+  display: none!important;
+}
