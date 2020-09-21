@@ -128,8 +128,9 @@
               <div class="left-label">
                 <div class="label-item">
                   <div class="label-value">
+                    <div class="label-icon"></div>
                     <div class="unit">高频</div>
-                    <div class="value my-font">67</div>
+                    <div class="value my-font">8</div>
                     <div class="unit">&nbsp;个</div>
                   </div>
                   <div class="label-percent">
@@ -138,8 +139,9 @@
                 </div>
                 <div class="label-item">
                   <div class="label-value">
+                    <div class="label-icon"></div>
                     <div class="unit">低频</div>
-                    <div class="value my-font">33</div>
+                    <div class="value my-font">4</div>
                     <div class="unit">&nbsp;个</div>
                   </div>
                   <div class="label-percent">
@@ -337,12 +339,6 @@ export default {
           trigger: "item",
           formatter: "{b} : {c} ({d}%)"
         },
-        grid: {
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0
-        },
         graphic: [
           {
             //环形图中间添加文字
@@ -352,20 +348,20 @@ export default {
             style: {
               text: this.landData.farmLandArea || '',
               textAlign: "center",
-              fill: "#2787F5", //文字的颜色
-              fontSize: 18,
-              fontWeight: 600
+              fill: "#29E3FD", //文字的颜色
+              fontSize: 28,
+              fontFamily: 'my-font'
             }
           },
           {
             type: "text",
             left: "center",
-            top: "50%",
+            top: "54%",
             style: {
               text: "总面积",
               textAlign: "center",
-              fill: "#98A4AF",
-              fontSize: 12
+              fill: "#F0F0F0",
+              fontSize: 14
             }
           }
         ],
@@ -374,10 +370,17 @@ export default {
             type: "pie",
             radius: ['50%', '70%'], // 内外半径
             label: {
-              color: '#9FA8B8',
+              color: '#98A4AF',
               fontSize: 12,
               lineHeight: 14,
-              formatter: '{b} {d}%'
+              formatter: '{b} \n{d}% \n{a}'
+            },
+            labelLine: {
+              // length: 8,
+              // length2: 6,
+              lineStyle: {
+                // color: '#3E495E'
+              }
             },
             data: this.landChartData || []
           }
@@ -386,7 +389,7 @@ export default {
     },
     getDeviceChartConfig() {
       return {
-        color: ['#7B8BF6', '#43D1D5', '#ECC94C'],
+        color: ['#ECC94C', '#68E0E3', '#38A1DA'],
         tooltip: {
           show: false,
           trigger: "item",
@@ -403,13 +406,13 @@ export default {
             //环形图中间添加文字
             type: "text", //通过不同top值可以设置上下显示
             left: "center",
-            top: "38%",
+            top: "34%",
             style: {
               text: this.deviceData.totalNumber || '',
               textAlign: "center",
-              fill: "#2787F5", //文字的颜色
-              fontSize: 18,
-              fontWeight: 600
+              fill: "#29E3FD", //文字的颜色
+              fontSize: 28
+              // fontWeight: 600
             }
           },
           {
@@ -419,15 +422,15 @@ export default {
             style: {
               text: "总数",
               textAlign: "center",
-              fill: "#98A4AF",
-              fontSize: 12
+              fill: "#F0F0F0",
+              fontSize: 14
             }
           }
         ],
         series: [
           {
             type: "pie",
-            radius: ['50%', '70%'], // 内外半径
+            radius: ['60%', '80%'], // 内外半径
             label: {
               show: false,
               color: '#9FA8B8',
@@ -447,7 +450,7 @@ export default {
     },
     getBaseStationChartConfig() {
       return {
-        color: ['#7B8BF6', '#43D1D5', '#ECC94C'],
+        color: ['#ECC94C', '#68E0E3'],
         tooltip: {
           show: false,
           trigger: "item",
@@ -468,27 +471,27 @@ export default {
             style: {
               text: 12,
               textAlign: "center",
-              fill: "#2787F5", //文字的颜色
-              fontSize: 18,
-              fontWeight: 600
+              fill: "#29E3FD", //文字的颜色
+              fontSize: 28
+              // fontWeight: 600
             }
           },
           {
             type: "text",
             left: "center",
-            top: "50%",
+            top: "54%",
             style: {
               text: "总数",
               textAlign: "center",
-              fill: "#98A4AF",
-              fontSize: 12
+              fill: "#F0F0F0",
+              fontSize: 14
             }
           }
         ],
         series: [
           {
             type: "pie",
-            radius: ['50%', '70%'], // 内外半径
+            radius: ['60%', '80%'], // 内外半径
             label: {
               show: false,
               color: '#9FA8B8',
@@ -585,10 +588,10 @@ export default {
             itemStyle: {
               //通常情况下：
               emphasis: {
-                barBorderRadius: 16,
+                barBorderRadius: 18,
               },
               normal: {
-                barBorderRadius: 16,
+                barBorderRadius: 18,
                 color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
                     offset: 0,
                     color: '#1D9DE3'
@@ -598,13 +601,13 @@ export default {
                 }])
               }
             },
-            barWidth: 16,
+            barWidth: 18,
             showBackground: true,
             backgroundStyle: {
               color: 'rgba(0, 0, 0, 0)',
               borderWidth: 1,
               borderColor: '#417FC8',
-              barBorderRadius: 16
+              barBorderRadius: 18
             },
             animationCurve: "easeOutBack"
           }
@@ -638,7 +641,7 @@ export default {
           ],
           // roseType: 'radius',
           label: {
-            color: '#9FA8B8',
+            color: '#98A4AF',
             fontSize: 12,
             lineHeight: 14,
             formatter: '{b} \n {d}%'
@@ -647,7 +650,7 @@ export default {
             length: 8,
             length2: 6,
             lineStyle: {
-              color: '#3E495E'
+              // color: '#3E495E'
             }
           }
         }]
@@ -659,8 +662,8 @@ export default {
 <style lang="scss" scoped>
 .home-container {
   width: 100%;
-  height: 100%;
   padding: 0.2rem 0.15rem;
+  background-color: #16193C;
   .static-container {
     display: flex;
     justify-content: space-between;
@@ -728,7 +731,7 @@ export default {
       }
       #sales-volume-chart {
         width: 100%;
-        height: 2rem;
+        height: 1.8rem;
       }
       .chart-title {
         display: flex;
@@ -844,6 +847,7 @@ export default {
                 margin-left: 0.22rem;
                 .value {
                   font-size: 0.26rem;
+                  margin-right: 0.04rem;
                 }
                 .unit {
                   font-size: 0.14rem;
@@ -872,22 +876,6 @@ export default {
             flex-direction: column;
             .label-item {
               margin-bottom: 0.1rem;
-              .label-title {
-                display: flex;
-                align-items: center;
-                height: 0.2rem;
-                padding: 0 0.04rem;
-                background-color: #1B3259;
-                .label-icon {
-                  width: 0.12rem;
-                  height: 0.1rem;
-                }
-                .label-text {
-                  color: #F0F0F0;
-                  font-size: 0.12rem;
-                  margin-left: 0.05rem;
-                }
-              }
               &:nth-of-type(1) {
                 .label-icon {
                   background-color: #ECC94C;
@@ -898,18 +886,18 @@ export default {
                   background-color: #68E0E3;
                 }
               }
-              &:nth-of-type(3) {
-                .label-icon {
-                  background-color: #38A1DA;
-                }
-              }
               .label-value {
                 display: flex;
-                align-items: flex-end;
+                align-items: center;
+                .label-icon {
+                  width: 0.12rem;
+                  height: 0.1rem;
+                  margin-right: 0.1rem;
+                }
                 .value {
                   color: #29E3FD;
                   font-size: 0.3rem;
-                  margin: 0 0.03rem;
+                  margin: 0 0.04rem;
                 }
                 .unit {
                   color: #29E3FD;
@@ -924,8 +912,8 @@ export default {
           }
         }
         .chart-container {
-          width: 1.4rem;
-          height: 1.4rem;
+          width: 1.6rem;
+          height: 1.6rem;
           #device-chart,
           #base-station-chart {
             width: 100%;

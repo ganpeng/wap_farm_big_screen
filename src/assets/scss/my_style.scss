@@ -2,6 +2,19 @@ html, body {
   font-size: 0.14rem;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
+  color: #fff;
+}
+
+/****
+  字体
+****/
+@font-face {
+  font-family: 'myFont';
+  src: url('../font/BebasNeueBold.ttf');
+}
+
+.my-font {
+  font-family: 'myFont';
 }
 
 /****
