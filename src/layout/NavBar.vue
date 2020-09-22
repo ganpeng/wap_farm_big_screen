@@ -58,23 +58,20 @@ export default {
   methods: {
     goPage(nav) {
       if (this.$route.path !== nav.path) {
-        this.$router.push({name: nav.name});
+        this.$router.replace({name: nav.name});
       }
-    },
-    gotoHome() {
-      this.$router.push({name: 'Home'});
     }
   }
 };
 </script>
 <style lang="scss" scoped>
 .nav-bar-container {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 0.5rem;
-  padding: 0 0.6rem;
+  height: 0.7rem;
+  padding: 0 0.4rem;
   background: #14284B;
   box-shadow: 0 -0.01rem 0.02rem 0 rgba(14, 15, 37, 0.1);
   z-index: 1000;
@@ -84,10 +81,12 @@ export default {
     align-items: center;
     width: 100%;
     height: 100%;
+    // padding-top: 0.1rem;
     .nav-item {
       display: flex;
       flex-direction: column;
       align-items: center;
+      flex: 1;
       .icon {
         width: 0.2rem;
         height: 0.2rem;

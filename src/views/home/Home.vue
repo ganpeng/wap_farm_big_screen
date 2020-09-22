@@ -372,15 +372,8 @@ export default {
             label: {
               color: '#98A4AF',
               fontSize: 12,
-              lineHeight: 14,
-              formatter: '{b} \n{d}% \n{a}'
-            },
-            labelLine: {
-              // length: 8,
-              // length2: 6,
-              lineStyle: {
-                // color: '#3E495E'
-              }
+              lineHeight: 16,
+              formatter: '{b} \n{d}% \n{c}公顷'
             },
             data: this.landChartData || []
           }
@@ -662,8 +655,7 @@ export default {
 <style lang="scss" scoped>
 .home-container {
   width: 100%;
-  padding: 0.2rem 0.15rem;
-  background-color: #16193C;
+  height: 100%;
   .static-container {
     display: flex;
     justify-content: space-between;

@@ -1,22 +1,42 @@
 <template>
   <div class="layout-container">
     <nav-bar></nav-bar>
-    <router-view></router-view>
+    <div class="scroll-wrapper">
+      <div class="content">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 <script>
-import NavBar from './NavBar';
+import NavBar from "./NavBar";
 export default {
   name: "Layout",
-  components: {NavBar}
+  components: { NavBar }
 };
 </script>
 <style lang="scss" scoped>
 .layout-container {
+  position: relative;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
-  padding-bottom: 0.5rem;
-  background-color: #16193C;
+  overflow: hidden;
+  background-color: #16193c;
+  .scroll-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0.7rem;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    .content {
+      width: 100%;
+      padding: 0.2rem 0.15rem;
+      min-height: calc(100% + 1px);
+    }
+  }
 }
 </style>

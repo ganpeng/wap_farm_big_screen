@@ -24,15 +24,19 @@
       <div class="charts-container">
         <div class="charts-item">
           <div class="chart-title">
-            <i class="split-line"></i>
-            耕地<span class="value">{{landData.farmLandArea}}</span><span class="unit">公顷</span>
+            <div class="point"></div>
+            <div class="label">总耕地</div>
+            <div class="value my-font">{{landData.farmLandArea}}</div>
+            <div class="unit">公顷</div>
           </div>
           <div id="land-chart"></div>
         </div>
         <div class="charts-item">
           <div class="chart-title">
-            <i class="split-line"></i>
-            种植<span class="value">{{plantData.totalArea}}</span><span class="unit">公顷</span>
+            <div class="point"></div>
+            <div class="label">种植</div>
+            <div class="value my-font">{{plantData.totalArea}}</div>
+            <div class="unit">公顷</div>
           </div>
           <div id="plant-chart"></div>
         </div>
@@ -156,6 +160,9 @@ export default {
     try {
       await this.$nextTick();
       let { farmId } = this.$route.query;
+
+      farmId = farmId || 7;
+
       // 获取农场信息
       this.getFarm(farmId);
       // 获取传感器数据
@@ -446,39 +453,36 @@ export default {
             //环形图中间添加文字
             type: "text", //通过不同top值可以设置上下显示
             left: "center",
-            top: "40%",
+            top: "38%",
             style: {
               text: this.landData.farmLandArea || '',
               textAlign: "center",
               fill: "#2787F5", //文字的颜色
-              fontSize: 18,
+              fontSize: 28,
               fontWeight: 600
             }
           },
           {
             type: "text",
             left: "center",
-            top: "50%",
+            top: "54%",
             style: {
               text: "总面积",
               textAlign: "center",
               fill: "#98A4AF",
-              fontSize: 12
+              fontSize: 14
             }
           }
         ],
         series: [
           {
             type: "pie",
-            // radius: [40, 60],
-            // center: ["50%", "50%"],
-            // roseType: "area",
             radius: ['50%', '70%'], // 内外半径
             label: {
               color: '#9FA8B8',
               fontSize: 12,
-              lineHeight: 14,
-              formatter: '{b} {d}%'
+              lineHeight: 16,
+              formatter: '{b} \n{d}%\n{c}公顷'
             },
             data: this.landChartData || []
           }
@@ -739,27 +743,28 @@ export default {
       .chart-title {
         display: flex;
         align-items: center;
-        font-size: 0.14rem;
-        line-height: 0.18rem;
-        color: #98A4AF;
-        text-align: center;
-        .split-line {
+        // height: 0.32rem;
+        .point {
           display: inline-block;
-          width: 0.03rem;
-          height: 0.15rem;
-          background: linear-gradient(231deg,rgba(255,134,0,1) 0%,rgba(255,177,124,1) 100%);
-          border-radius: 0.02rem;
+          width: 5px;
+          height: 5px;
+          line-height: 0.16rem;
+          border-radius: 50%;
+          background-color: #70caee;
           margin-right: 0.1rem;
         }
-        .value {
-          color: #2787F5;
-          font-size: 0.2rem;
-          font-weight: 600;
-          margin: 0 0.06rem;
-        }
+        .label,
         .unit {
-          color: #2787F5;
           font-size: 0.12rem;
+          font-weight: 400;
+          color: #29E3FD;
+          line-height: 0.17rem;
+        }
+        .value {
+          color: #29E3FD;
+          font-size: 0.26rem;
+          line-height: 0.32rem;
+          margin: 0 0.05rem;
         }
       }
       .charts-item {
@@ -773,7 +778,7 @@ export default {
         #land-chart,
         #plant-chart {
           width: 100%;
-          height: calc(100% - 0.2rem);
+          height: calc(100% - 0.32rem);
         }
       }
     }
@@ -796,7 +801,11 @@ export default {
         padding: 0.1rem;
         background-color: #172E58;
         border-radius: 0.05rem;
-        margin-bottom: 0.06rem;
+        &:nth-of-type(1),
+        &:nth-of-type(2),
+        &:nth-of-type(3) {
+          margin-bottom: 0.06rem;
+        }
         &.active {
           background-color: #3059A3;
         }
