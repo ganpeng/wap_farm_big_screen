@@ -315,7 +315,7 @@ export default {
               color: "#9FA8B8",
               fontSize: 12,
               lineHeight: 14,
-              formatter: "{b} {d}%\n{c}"
+              formatter: "{b} {d}%\n{c}万元"
             },
             labelLine: {
               lineStyle: {

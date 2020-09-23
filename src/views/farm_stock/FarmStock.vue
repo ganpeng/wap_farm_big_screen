@@ -332,11 +332,6 @@ export default {
     getPlantConfig(data) {
       return {
         color: ["#6992DE", "#D6B564", "#DD6F46", "#884CDE", "#ECC94C" ],
-        grid: {
-          left: '10%',
-          right: '10%',
-          bottom: 0
-        },
         tooltip: {
           trigger: 'item',
           position: function (pos, params, dom, rect, size) {
@@ -365,7 +360,7 @@ export default {
           },
           labelLine: {
             lineStyle: {
-              color: '#3E495E'
+              // color: '#3E495E'
             }
           }
         }]
