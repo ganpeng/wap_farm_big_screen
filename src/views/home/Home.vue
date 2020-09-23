@@ -368,12 +368,12 @@ export default {
         series: [
           {
             type: "pie",
-            radius: ['50%', '70%'], // 内外半径
+            radius: ['40%', '60%'], // 内外半径
             label: {
               color: '#98A4AF',
               fontSize: 12,
-              lineHeight: 16,
-              formatter: '{b} \n{d}% \n{c}公顷'
+              lineHeight: 12,
+              formatter: '{b} {d}% \n{c}公顷'
             },
             data: this.landChartData || []
           }

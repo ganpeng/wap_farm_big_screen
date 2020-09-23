@@ -142,6 +142,7 @@ import _ from 'lodash';
 import echarts from 'echarts';
 import TitleOne from '@/components/TitleOne';
 import WarningCarousel from './WarningCarousel';
+import constants from '@/util/constants';
 export default {
   name: 'FarmStock',
   components: { TitleOne, WarningCarousel },
@@ -191,7 +192,9 @@ export default {
     getWarningList() {
       this.$service.getWarningList({ pageSize: 20 })
         .then((res) => {
-          this.warningList = res.data.list || [];
+          let warningList = res.data.list || [];
+          this.warningList = this.serializeAlertData(warningList);
+          console.log(this.warningList);
         }).catch((err) => {
           console.log(err);
         });
@@ -346,7 +349,7 @@ export default {
         },
         series: [{
           type: "pie",
-          radius: "70%",
+          radius: "60%",
           data: [
             { name: "水稻", value: data.riceArea },
             { name: "大豆", value: data.soyaArea },
@@ -357,12 +360,10 @@ export default {
           label: {
             color: '#9FA8B8',
             fontSize: 12,
-            lineHeight: 16,
-            formatter: '{b} {c}\n{d}%'
+            lineHeight: 14,
+            formatter: '{b} {d}%\n{c}公顷'
           },
           labelLine: {
-            // length: 8,
-            // length2: 6,
             lineStyle: {
               color: '#3E495E'
             }
@@ -384,7 +385,7 @@ export default {
         },
         grid: {
           left: 60,
-          right: 34,
+          right: 42,
           top: "5%",
           bottom: 0
         },
@@ -503,12 +504,12 @@ export default {
         series: [
           {
             type: "pie",
-            radius: ['50%', '70%'], // 内外半径
+            radius: ['40%', '60%'], // 内外半径
             label: {
               color: '#98A4AF',
               fontSize: 12,
-              lineHeight: 16,
-              formatter: '{b} \n{d}% \n{c}个'
+              lineHeight: 14,
+              formatter: '{b} {d}%\n{c}个'
             },
             data: this.deviceChartData || []
           }
@@ -517,6 +518,52 @@ export default {
     },
     gotoFarmDetail(id) {
       this.$router.replace({name: 'FarmDetail', params: {id}});
+    },
+    serializeAlertData(warningList) {
+      return warningList.map((item) => {
+        let description = '';
+        // &uarr;上升 &darr;下降
+        if (_.isArray(item.description)) {
+          description = item.description.reduce((prev, curr) => {
+            let {metric, up, value, low, min, max} = curr;
+            let obj = constants.metricList.find((item) => item.value === metric.toUpperCase());
+            let name = _.get(obj, 'name') || '';
+            let unit = _.get(obj, 'unit') || '';
+            prev += `${name}: ${value}${unit},`;
+            if (up && max && value) {
+              if (parseFloat(value) > parseFloat(max)) {
+                prev += `<span class="up-danger">&uarr;${up}${unit}</span>,`;
+              } else {
+                prev += `<span>&uarr;${up}</span>,`;
+              }
+            }
+            prev += ' ';
+            if (max) {
+              prev += `最高阈值: ${max}${unit}`;
+            }
+            prev += ' ';
+            if (low && min && value) {
+              if (parseFloat(value) < parseFloat(min)) {
+                prev += `<span class="low-danger">&darr;${low}</span>,`;
+              } else {
+                prev += `<span>&darr;${low}</span>, `;
+              }
+            }
+
+            if (min) {
+              prev += `最低阈值: ${min}`;
+            }
+            return prev;
+          }, '');
+        } else {
+          description = item.description.description;
+        }
+        let obj = {};
+        obj.farmName = item.farmName;
+        obj.description = description;
+        obj.date = this.$util.dateFormat('mm-dd HH:MM:SS', new Date(item.warnTime));
+        return obj;
+      });
     }
   }
 }

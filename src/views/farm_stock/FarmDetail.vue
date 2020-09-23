@@ -172,9 +172,8 @@ export default {
   async created() {
     try {
       await this.$nextTick();
-      let { farmId } = this.$route.query;
-
-      farmId = farmId || 7;
+      let { id } = this.$route.params;
+      let farmId = id || 7;
 
       // 获取农场信息
       this.getFarm(farmId);
@@ -326,7 +325,7 @@ export default {
         this.map = new window.AMap.Map("my-map", {
           // 设置地图的显示样式
           mapStyle: "amap://styles/93f622ecbb8e8a4ed4f6b40967ef3857",
-          zoom: 14,
+          zoom: 12,
           zooms: [7, 21]
         });
         let marker = new window.AMap.Marker({
@@ -490,12 +489,12 @@ export default {
         series: [
           {
             type: "pie",
-            radius: ['50%', '70%'], // 内外半径
+            radius: ['40%', '60%'], // 内外半径
             label: {
               color: '#9FA8B8',
               fontSize: 12,
-              lineHeight: 16,
-              formatter: '{b} \n{d}%\n{c}公顷'
+              lineHeight: 14,
+              formatter: '{b} {d}%\n{c}公顷'
             },
             data: this.landChartData || []
           }
@@ -880,6 +879,7 @@ export default {
     .sensor-chart-container {
       width: 100%;
       height: 1.4rem;
+      margin-top: 0.1rem;
       #sensor-chart {
         width: 100%;
         height: 100%;
@@ -898,11 +898,10 @@ export default {
         padding: 0 0.1rem;
         line-height: 0.35rem;
         text-align: center;
-        color: #417fc8;
-        background-color: #f0f7ff;
+        color: #98A4AF;
+        background-color: #192A4A;
         border-radius: 0.05rem;
         font-size: 0.14rem;
-        color: #98a4af;
         overflow: hidden;
         cursor: pointer;
         &.active {

@@ -57,6 +57,7 @@
                 <svg-icon v-if="index === 0" icon-class="new_sale_top5_icon1"></svg-icon>
                 <svg-icon v-if="index === 1" icon-class="new_sale_top5_icon2"></svg-icon>
                 <svg-icon v-if="index === 2" icon-class="new_sale_top5_icon3"></svg-icon>
+                <span v-if="index !== 0 && index !== 1 && index !== 2" class="no-icon">{{index + 1}}</span>
               </div>
               <div class="farm">{{top.farm}}</div>
               <div class="sale-value">{{top.saleAmount}}</div>
@@ -308,13 +309,13 @@ export default {
         series: [
           {
             type: "pie",
-            radius: "70%",
+            radius: "60%",
             data: this.saleAmountPieChartData[this.date].data,
             label: {
               color: "#9FA8B8",
               fontSize: 12,
               lineHeight: 14,
-              formatter: "{b}\n{c}\n{d}%"
+              formatter: "{b} {d}%\n{c}"
             },
             labelLine: {
               lineStyle: {
@@ -921,6 +922,15 @@ export default {
               width: 0.18rem;
               height: 0.2rem;
             }
+          }
+          .no-icon {
+            font-size: 0.12rem;
+            background-color: #2E5395;
+            width: 0.18rem;
+            height: 0.18rem;
+            line-height: 0.18rem;
+            border-radius: 50%;
+            text-align: center;
           }
           .farm {
             flex: 1;

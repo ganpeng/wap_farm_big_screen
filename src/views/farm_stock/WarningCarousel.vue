@@ -2,6 +2,8 @@
   <div class="warning-carousel-container">
     <carousel
       :autoplay="true"
+      :autoplayTimeout="5000"
+      :mouseDrag="false"
       :per-page="1"
       :loop="true"
       :autoplayHoverPause="false"
@@ -11,15 +13,15 @@
         <div class="warning-item">
           <div class="date">
             <svg-icon icon-class="new_warning_icon1"></svg-icon>
-            <span class="value">05-25 12:00:22</span>
+            <span class="value">{{data.date}}</span>
           </div>
           <div class="farm">
             <svg-icon icon-class="new_warning_icon2"></svg-icon>
-            <span class="value">吉林省榆树市延和天丰制米有限公司</span>
+            <span class="value">{{data.farmName}}</span>
           </div>
           <div class="desc">
             <svg-icon icon-class="new_warning_icon3"></svg-icon>
-            <span class="value">,最低阈值：10°C</span>
+            <span v-html="data.description" class="value"></span>
           </div>
           <div class="right-top-icon">
             <svg-icon icon-class="new_warning_icon4"></svg-icon>
@@ -45,15 +47,15 @@ export default {
 <style lang="scss" scoped>
 .warning-carousel-container {
   width: 100%;
-  min-height: 1.4rem;
+  min-height: 1.6rem;
   .VueCarousel {
-    min-height: 1.4rem;
+    min-height: 1.6rem;
     .VueCarousel-wrapper {
-      min-height: 1.4rem;
+      min-height: 1.6rem;
       .VueCarousel-inner {
-        min-height: 1.4rem;
+        min-height: 1.6rem;
         .VueCarousel-slide {
-          min-height: 1.4rem;
+          min-height: 1.6rem;
           .warning-item {
             position: relative;
             width: 100%;
@@ -71,8 +73,13 @@ export default {
                 margin-right: 0.06rem;
               }
               .value {
+                flex: 1;
                 color: #F0F0F0;
+                font-size: 0.12rem;
               }
+            }
+            .desc {
+              align-items: flex-start;
             }
             .date {
               .value {
