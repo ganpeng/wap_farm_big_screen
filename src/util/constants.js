@@ -50,6 +50,74 @@ const spreadSensorList = [
   }
 ];
 
+const topList = {
+  year: [
+    {
+      area: '北京',
+      vip: '55',
+      down: '66',
+      amount: 200
+    },
+    {
+      area: '北京',
+      vip: '55',
+      down: '66',
+      amount: 200
+    },
+    {
+      area: '北京',
+      vip: '55',
+      down: '66',
+      amount: 200
+    },
+    {
+      area: '北京',
+      vip: '55',
+      down: '66',
+      amount: 200
+    },
+    {
+      area: '北京',
+      vip: '55',
+      down: '66',
+      amount: 200
+    }
+  ],
+  month: [
+    {
+      area: '北京',
+      vip: '25',
+      down: '26',
+      amount: 100
+    },
+    {
+      area: '北京',
+      vip: '25',
+      down: '26',
+      amount: 100
+    },
+    {
+      area: '北京',
+      vip: '25',
+      down: '26',
+      amount: 100
+    },
+    {
+      area: '北京',
+      vip: '25',
+      down: '26',
+      amount: 100
+    },
+    {
+      area: '北京',
+      vip: '25',
+      down: '26',
+      amount: 100
+    }
+  ]
+};
+
 export default {
-  spreadSensorList
+  spreadSensorList,
+  topList
 };
