@@ -1,114 +1,127 @@
 <template>
   <div class="company-info-container">
-    <div class="company-basic-info">
-      <div class="header">
-        <div class="title">{{farm.name}}</div>
-        <div v-if="farm.farmCertificates.length > 0" @click="viewCertificateHandler" class="view-certificate">查看证书</div>
+    <div @click="gotoFarmStock" class="back-field">
+      <span class="back-btn">
+        <svg-icon icon-class="new_back_icon"></svg-icon>
+        <span class="title">农场详情</span>
+      </span>
+    </div>
+    <div class="padding-wrapper">
+      <div class="company-basic-info">
+        <div class="header">
+          <div class="title">{{farm.name}}</div>
+          <div v-if="farm.farmCertificates.length > 0" @click="viewCertificateHandler" class="view-certificate">查看证书</div>
+        </div>
+        <div class="created-area">
+          <span class="created">{{createdDate}}年成立</span>
+          <span class="area">{{farm.area}}公顷</span>
+        </div>
+        <div class="mark-list-container">
+          <ul class="mark-list">
+            <li v-for="(mark, index) in farmMarks" :key="index" class="mark-item">{{mark.name}}</li>
+          </ul>
+        </div>
+        <div class="desc">{{farm.description}}</div>
       </div>
-      <div class="created-area">
-        <span class="created">{{createdDate}}年成立</span>
-        <span class="area">{{farm.area}}公顷</span>
-      </div>
-      <div class="mark-list-container">
-        <ul class="mark-list">
-          <li v-for="(mark, index) in farmMarks" :key="index" class="mark-item">{{mark.name}}</li>
-        </ul>
-      </div>
-      <div class="desc">{{farm.description}}</div>
     </div>
     <div class="map">
       <div id="my-map"></div>
     </div>
-    <div class="charts-info">
-      <title-one title="种植信息"></title-one>
-      <div class="charts-container">
-        <div class="charts-item">
-          <div class="chart-title">
-            <div class="point"></div>
-            <div class="label">总耕地</div>
-            <div class="value my-font">{{landData.farmLandArea}}</div>
-            <div class="unit">公顷</div>
-          </div>
-          <div id="land-chart"></div>
-        </div>
-        <div class="charts-item">
-          <div class="chart-title">
-            <div class="point"></div>
-            <div class="label">种植</div>
-            <div class="value my-font">{{plantData.totalArea}}</div>
-            <div class="unit">公顷</div>
-          </div>
-          <div id="plant-chart"></div>
-        </div>
-      </div>
-    </div>
-    <div class="env-data-container">
-      <title-one title="环境数据"></title-one>
-      <ul class="sensor-list">
-        <li
-          v-for="(sensor, index) in sensorList"
-          :key="index"
-          @click="sensorChangeHandler(index)"
-          :class="['sensor-item', sensorActiveIndex === index && 'active']"
-        >
-          <div class="left">
-            <div class="label">{{sensor.title}}</div>
-            <div class="value">
-              {{sensor.value}}
-              <i class="unit">{{sensor.unit}}</i>
+    <div class="padding-wrapper">
+      <div class="charts-info">
+        <title-one title="种植信息"></title-one>
+        <div class="charts-container">
+          <div class="charts-item">
+            <div class="chart-title">
+              <div class="point"></div>
+              <div class="label">总耕地</div>
+              <div class="value my-font">{{landData.farmLandArea}}</div>
+              <div class="unit">公顷</div>
             </div>
+            <div id="land-chart"></div>
           </div>
-          <div class="right-icon">
-            <svg-icon :icon-class="sensor.wapIcon"></svg-icon>
+          <div class="charts-item">
+            <div class="chart-title">
+              <div class="point"></div>
+              <div class="label">种植</div>
+              <div class="value my-font">{{plantData.totalArea}}</div>
+              <div class="unit">公顷</div>
+            </div>
+            <div id="plant-chart"></div>
           </div>
-        </li>
-      </ul>
-      <div v-show="sensorChartData.days.length > 0" class="sensor-chart-container">
-        <div id="sensor-chart"></div>
+        </div>
       </div>
-    </div>
-    <div v-if="cameraList.length > 0" class="env-live-container">
-      <title-one title="实时监看"></title-one>
-      <div class="camera-list">
-        <scrollBar direction="x" :activeIndex="activeIndex">
-          <div
-            v-for="(camera, index) in cameraList"
+      <div class="env-data-container">
+        <title-one title="环境数据"></title-one>
+        <ul class="sensor-list">
+          <li
+            v-for="(sensor, index) in sensorList"
             :key="index"
-            @click="changeCamera(camera, index)"
-            :class="['camera-item', 'scrollBarItem', activeIndex === index && 'active']"
-          >{{camera.deviceName}}</div>
-        </scrollBar>
-      </div>
-      <div class="live-video-container">
-        <div class="live-video-wrapper">
-          <div v-if="playUrl !== noLapseUrl" class="video-player-wrapper">
-            <video-player ref="videoPlayer" :playUrl="playUrl" :videoType="videoType"></video-player>
-          </div>
-          <div v-else v-html="`本月暂未生成延时摄影`" class="no-data-text"></div>
-        </div>
-        <div class="header">
-          <div class="left">
-            <div @click="liveMonitorHandler" :class="['live-btn', month && 'disabled']">
-              实时监控
-              <svg-icon icon-class="wap_real_live_icon"></svg-icon>
+            @click="sensorChangeHandler(index)"
+            :class="['sensor-item', sensorActiveIndex === index && 'active']"
+          >
+            <div class="left">
+              <div class="label">{{sensor.title}}</div>
+              <div class="value">
+                {{sensor.value}}
+                <i class="unit">{{sensor.unit}}</i>
+              </div>
             </div>
-          </div>
-          <div class="right">
-            <div @click="monthSelectHandler" :class="['month-select', month && 'active']">
-              <svg-icon icon-class="pc_select_month_icon"></svg-icon>
-              {{month ? month : '选择月份'}}
-              <ul v-if="monthListVisible" class="month-list">
-                <li
-                  v-for="(month, index) in monthList"
-                  :key="index"
-                  @click.stop="selectHandler(month)"
-                  class="month-item"
-                >{{month}}</li>
-              </ul>
+            <div class="right-icon">
+              <svg-icon :icon-class="sensor.wapIcon"></svg-icon>
             </div>
-          </div>
+          </li>
+        </ul>
+        <div v-show="sensorChartData.days.length > 0" class="sensor-chart-container">
+          <div id="sensor-chart"></div>
         </div>
       </div>
+      <div v-if="cameraList.length > 0" class="env-live-container">
+        <title-one title="实时监看"></title-one>
+        <div class="camera-list">
+          <scrollBar direction="x" :activeIndex="activeIndex">
+            <div
+              v-for="(camera, index) in cameraList"
+              :key="index"
+              @click="changeCamera(camera, index)"
+              :class="['camera-item', 'scrollBarItem', activeIndex === index && 'active']"
+            >{{camera.deviceName}}</div>
+          </scrollBar>
+        </div>
+        <div class="live-video-container">
+          <div class="live-video-wrapper">
+            <div v-if="playUrl !== noLapseUrl" class="video-player-wrapper">
+              <video-player ref="videoPlayer" :playUrl="playUrl" :videoType="videoType"></video-player>
+            </div>
+            <div v-else v-html="`本月暂未生成延时摄影`" class="no-data-text"></div>
+          </div>
+          <div class="header">
+            <div class="left">
+              <div @click="liveMonitorHandler" :class="['live-btn', month && 'disabled']">
+                实时监控
+                <svg-icon icon-class="wap_real_live_icon"></svg-icon>
+              </div>
+            </div>
+            <div class="right">
+              <div @click="monthSelectHandler" :class="['month-select', month && 'active']">
+                <svg-icon icon-class="pc_select_month_icon"></svg-icon>
+                {{month ? month : '选择月份'}}
+                <ul v-if="monthListVisible" class="month-list">
+                  <li
+                    v-for="(month, index) in monthList"
+                    :key="index"
+                    @click.stop="selectHandler(month)"
+                    class="month-item"
+                  >{{month}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="logo">
+      <svg-icon icon-class="new_footer_logo"></svg-icon>
     </div>
     <month-select :select="monthSelected" ref="monthSelect"></month-select>
     <certificate-dialog ref="cetificateDialog" :dataList="farm.farmCertificates"></certificate-dialog>
@@ -664,12 +677,48 @@ export default {
           }
         ]
       };
+    },
+    gotoFarmStock() {
+      this.$router.replace({name: 'FarmStock'});
     }
   }
 };
 </script>
 <style lang="scss" scoped>
 .company-info-container {
+  position: relative;
+  width: 100%;
+  min-height: calc(100% + 1px);
+  padding-top: 0.6rem;
+  background-color: #16193c;
+  .back-field {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.6rem;
+    padding: 0 0.15rem;
+    background-color: #16193c;
+    z-index: 200;
+    .svg-icon {
+      width: 0.1rem;
+      height: 0.18rem;
+    }
+    .title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.16rem;
+      font-weight: 500;
+      color: #FFFFFF;
+    }
+  }
+  .padding-wrapper {
+    padding: 0 0.15rem;
+  }
   .company-basic-info {
     width: 100%;
     background-color: #172E58;
@@ -964,6 +1013,17 @@ export default {
       line-height: 0.18rem;
       font-weight: 400;
       text-align: center;
+    }
+  }
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 1.5rem;
+    .svg-icon {
+      width: 2.5rem;
+      height: 0.34rem;
     }
   }
 }

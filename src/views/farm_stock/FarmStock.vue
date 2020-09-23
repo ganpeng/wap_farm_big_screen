@@ -49,7 +49,7 @@
       <title-one title="精选农场"></title-one>
       <div class="farm-list-container">
         <ul class="farm-list">
-          <li v-for="(farm, index) in farmList" :key="index" class="farm-item">
+          <li @click="gotoFarmDetail(farm.id)" v-for="(farm, index) in farmList" :key="index" class="farm-item">
             <div :style="`background-image: url('${farm.farmIndexUrl}');`" class="farm-img"></div>
             <div class="farm-name">{{farm.name}}</div>
           </li>
@@ -70,7 +70,7 @@
     </div>
     <div class="section-five section-item">
       <title-one title="经营情况统计"></title-one>
-      <div class="statics-one statics-item bg-icon4">
+      <div class="statics-one statics-item bg-icon5">
         <div class="chart-title">
           <div class="point"></div>
           <div class="label">农业现代化</div>
@@ -94,6 +94,12 @@
               <div class="value my-font">{{MemberData.certificatedMemberNumber}}<i>个</i></div>
             </div>
           </div>
+          <div class="statics-info-item">
+            <div class="item-wrapper">
+              <div class="label">累计服务营收</div>
+              <div class="value my-font">{{operatingData.revenueAmount | toFixed2}}<i>万元</i></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="statics-two statics-item bg-icon5">
@@ -105,44 +111,26 @@
           <div class="statics-info-item">
             <div class="item-wrapper">
               <div class="label">政府项目累计</div>
-              <div class="value my-font">{{MachineryData.totalNumber}}<i>个</i></div>
+              <div class="value my-font">{{operatingData.governmentProjectNumber}}<i>个</i></div>
             </div>
           </div>
           <div class="statics-info-item">
             <div class="item-wrapper">
               <div class="label">累计金额</div>
-              <div class="value my-font">{{MemberData.trainingDays}}<i>万元</i></div>
+              <div class="value my-font">{{operatingData.appropriationAmount | toFixed2}}<i>万元</i></div>
             </div>
           </div>
           <div class="statics-info-item">
             <div class="item-wrapper">
               <div class="label">农业补贴累计</div>
-              <div class="value my-font">{{MemberData.certificatedMemberNumber}}<i>次</i></div>
+              <div class="value my-font">{{operatingData.subsidyProjectNumber}}<i>次</i></div>
             </div>
           </div>
           <div class="statics-info-item">
             <div class="item-wrapper">
               <div class="label">累计金额</div>
-              <div class="value my-font">{{MemberData.certificatedMemberNumber}}<i>万元</i></div>
+              <div class="value my-font">{{operatingData.subsidyAmount | toFixed2}}<i>万元</i></div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="statics-three statics-item bg-icon6">
-        <div class="chart-title">
-          <div class="point"></div>
-          <div class="label">农业社会化服务</div>
-        </div>
-        <div class="statics-info-container">
-          <div class="statics-info-item">
-            <div class="item-wrapper">
-              <div class="label">累计服务营收</div>
-              <div class="value my-font">{{MachineryData.totalNumber}}<i>辆/台</i></div>
-            </div>
-          </div>
-          <div class="statics-info-item">
-          </div>
-          <div class="statics-info-item">
           </div>
         </div>
       </div>
@@ -526,6 +514,9 @@ export default {
           }
         ]
       };
+    },
+    gotoFarmDetail(id) {
+      this.$router.replace({name: 'FarmDetail', params: {id}});
     }
   }
 }
@@ -895,6 +886,7 @@ export default {
           }
           .value {
             font-size: 0.26rem;
+            line-height: 0.26rem;
             color: #29E3FD;
             i {
               font-size: 0.14rem;
@@ -904,21 +896,7 @@ export default {
         }
       }
     }
-    .statics-one {
-      width: 100%;
-      height: 1.1rem;
-      margin-top: 0.1rem;
-      .statics-info-container {
-        .statics-info-item {
-          &:nth-of-type(2) {
-            align-items: center;
-          }
-          &:nth-of-type(3) {
-            align-items: flex-end;
-          }
-        }
-      }
-    }
+    .statics-one,
     .statics-two {
       width: 100%;
       height: 1.75rem;
@@ -933,11 +911,6 @@ export default {
           }
         }
       }
-    }
-    .statics-three {
-      width: 100%;
-      height: 1.1rem;
-      margin-top: 0.15rem;
     }
   }
 }

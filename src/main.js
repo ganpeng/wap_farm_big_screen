@@ -14,6 +14,12 @@ import '@/assets/scss/index.scss';
 // 工具方法
 import util from '@/util';
 
+// 全局filter
+import * as filters from './filter';
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+});
+
 Vue.config.productionTip = false;
 Vue.prototype.$util = util;
 Vue.prototype.$service = service;

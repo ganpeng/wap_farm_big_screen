@@ -83,7 +83,7 @@
             <svg-icon icon-class="new_home_production_icon"></svg-icon>
           </div>
           <div class="middle-value">
-            <div class="value my-font">{{plantData.totalYield}}</div>
+            <div class="value my-font">{{plantData.totalYield | toFixed2}}</div>
             <div class="unit">万吨</div>
           </div>
           <div class="bottom-value">2020年产量</div>

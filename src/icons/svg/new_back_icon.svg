@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="17px" viewBox="0 0 10 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63 (92445) - https://sketch.com -->
+    <title>编组 5</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="农场详情" transform="translate(-15.000000, -34.000000)" fill="#FFFFFF">
+            <g id="编组-5" transform="translate(15.000000, 34.000000)">
+                <path d="M0,4 L10,4 C10.5522847,4 11,4.44771525 11,5 C11,5.55228475 10.5522847,6 10,6 L0,6 C-0.55228475,6 -1,5.55228475 -1,5 C-1,4.44771525 -0.55228475,4 0,4 Z" id="矩形" transform="translate(5.000000, 5.000000) rotate(-45.000000) translate(-5.000000, -5.000000) "></path>
+                <path d="M6,7.07106781 L6,17.0710678 C6,17.6233526 5.55228475,18.0710678 5,18.0710678 C4.44771525,18.0710678 4,17.6233526 4,17.0710678 L4,7.07106781 C4,6.51878306 4.44771525,6.07106781 5,6.07106781 C5.55228475,6.07106781 6,6.51878306 6,7.07106781 Z" id="矩形备份-10" transform="translate(5.000000, 12.071068) rotate(-45.000000) translate(-5.000000, -12.071068) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

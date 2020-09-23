@@ -40,6 +40,12 @@ export const constantRouterMap = [
       }
     ]
   },
+  // 农场详情
+  {
+    path: '/farm/detail/:id',
+    component: () => import('@/views/farm_stock/FarmDetail'),
+    name: 'FarmDetail'
+  },
   // 销售数据
   {
     path: '/sale',
