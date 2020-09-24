@@ -5,7 +5,7 @@
         @click="goPage(nav)"
         :class="['nav-item', activeMenu === nav.path && 'active']">
         <div class="icon">
-          <svg-icon v-if="activeMenu === nav.path" :icon-class="nav.activeIcon"></svg-icon>
+          <svg-icon v-if="activeMenu !== nav.path" :icon-class="nav.activeIcon"></svg-icon>
           <svg-icon v-else :icon-class="nav.icon"></svg-icon>
         </div>
         <div class="title">
@@ -81,7 +81,6 @@ export default {
     align-items: center;
     width: 100%;
     height: 100%;
-    // padding-top: 0.1rem;
     .nav-item {
       display: flex;
       flex-direction: column;
@@ -99,12 +98,12 @@ export default {
       .title {
         font-size: 0.12rem;
         font-weight: 400;
-        color: #39C7DB;
+        color: #fff;
         line-height: 0.14rem;
       }
       &.active {
         .title {
-          color: #fff;
+          color: #39C7DB;
         }
       }
     }

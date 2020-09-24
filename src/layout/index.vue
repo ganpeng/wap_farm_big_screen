@@ -1,7 +1,7 @@
 <template>
   <div class="layout-container">
     <nav-bar></nav-bar>
-    <div class="scroll-wrapper">
+    <div ref="scrollWrapper" class="scroll-wrapper">
       <div class="content">
         <router-view></router-view>
       </div>
@@ -12,7 +12,15 @@
 import NavBar from "./NavBar";
 export default {
   name: "Layout",
-  components: { NavBar }
+  components: { NavBar },
+  beforeRouteEnter(to, from, next) {
+    if (to.name !== from.name) {
+      next((vm) => {
+        vm.$refs.scrollWrapper.scrollTop = 0;
+      });
+    }
+    next();
+  }
 };
 </script>
 <style lang="scss" scoped>

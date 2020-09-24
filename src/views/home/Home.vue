@@ -73,7 +73,7 @@
             <svg-icon icon-class="new_home_area_icon"></svg-icon>
           </div>
           <div class="middle-value">
-            <div class="value my-font">{{plantData.totalArea}}</div>
+            <div class="value my-font">{{plantData.totalArea | toFixed2}}</div>
             <div class="unit">公顷</div>
           </div>
           <div class="bottom-value">2020年种植面积</div>

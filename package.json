@@ -9,12 +9,11 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
-    "better-scroll": "^2.0.4",
     "core-js": "^3.6.5",
     "echarts": "^4.9.0",
+    "keen-slider": "^5.2.3",
     "video.js": "^7.8.4",
     "vue": "^2.6.11",
-    "vue-carousel": "^0.18.0",
     "vue-router": "^3.4.3"
   },
   "devDependencies": {

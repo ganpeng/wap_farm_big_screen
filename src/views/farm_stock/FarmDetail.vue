@@ -123,7 +123,6 @@
     <div class="logo">
       <svg-icon icon-class="new_footer_logo"></svg-icon>
     </div>
-    <month-select :select="monthSelected" ref="monthSelect"></month-select>
     <certificate-dialog ref="cetificateDialog" :dataList="farm.farmCertificates"></certificate-dialog>
   </div>
 </template>
@@ -132,13 +131,12 @@ import _ from "lodash";
 import echarts from "echarts";
 import ScrollBar from "@/components/ScrollBar";
 import constants from "@/util/constants";
-import MonthSelect from "./MonthSelect";
 import VideoPlayer from "./VideoPlayer";
 import CertificateDialog from "./CertificateDialog";
 import TitleOne from '@/components/TitleOne';
 export default {
   name: 'FarmDetail',
-  components: { ScrollBar, MonthSelect, VideoPlayer, CertificateDialog, TitleOne },
+  components: { ScrollBar, VideoPlayer, CertificateDialog, TitleOne },
   data() {
     return {
       map: null,
@@ -946,7 +944,7 @@ export default {
             position: relative;
             color: #98a4af;
             &.active {
-              color: #222;
+              color: #FFFFFF;
             }
             .month-list {
               position: absolute;
@@ -955,8 +953,7 @@ export default {
               height: 1.3rem;
               padding: 0.1rem 0;
               overflow-y: scroll;
-              background-color: #fff;
-              box-shadow: 0 0.02rem 0.12rem 0 rgba(184, 200, 227, 0.4);
+              background-color: #16193c;
               border-radius: 0.04rem;
               z-index: 200;
               .month-item {
@@ -991,6 +988,7 @@ export default {
         }
         .no-data-text {
           color: #9FA8B8;
+          background-color: #16193c;
         }
       }
     }

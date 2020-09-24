@@ -42,7 +42,7 @@
     <div class="section-two section-item">
       <title-one title="实时预警"></title-one>
       <div class="warning-container bg-icon3">
-        <warning-carousel :dataList="warningList"></warning-carousel>
+        <warning-carousel ref="warningCarousel"></warning-carousel>
       </div>
     </div>
     <div class="section-three section-item">
@@ -194,7 +194,7 @@ export default {
         .then((res) => {
           let warningList = res.data.list || [];
           this.warningList = this.serializeAlertData(warningList);
-          console.log(this.warningList);
+          this.$refs.warningCarousel.initKeenSlider(this.warningList);
         }).catch((err) => {
           console.log(err);
         });

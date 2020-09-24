@@ -94,7 +94,7 @@ export default {
       }
       .title {
         font-size: 0.16rem;
-        color: #222;
+        color: #98A4AF;
       }
       .enter-btn {
         color: #497EBC;
@@ -118,7 +118,7 @@ export default {
         font-size: 0.16rem;
         text-align: center;
         &.active {
-          color: #222;
+          color: #98A4AF;
           border-bottom: 1px solid #EEEEEE;
           border-top: 1px solid #EEEEEE;
         }

@@ -167,7 +167,7 @@ const metricList = [{
   "parentId": null,
   "description": "气象",
   "orderBy": 6,
-  "unit": "µmol/(m2▪s)"
+  "unit": "µmol/(m2*s)"
 }, {
   "id": 358,
   "keyType": "metric",
