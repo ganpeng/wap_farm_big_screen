@@ -107,7 +107,7 @@
                     <div class="title">{{item.name}}</div>
                   </div>
                   <div class="label-value">
-                    <div class="value">{{item.value}}</div>
+                    <div class="value my-font">{{item.value}}</div>
                     <div class="unit">个</div>
                   </div>
                 </li>
@@ -348,8 +348,8 @@ export default {
             style: {
               text: this.landData.farmLandArea || '',
               textAlign: "center",
-              fill: "#29E3FD", //文字的颜色
-              fontSize: 28,
+              fill: "#F0F0F0", //文字的颜色
+              fontSize: 24,
               fontFamily: 'my-font'
             }
           },
@@ -361,7 +361,7 @@ export default {
               text: "总面积",
               textAlign: "center",
               fill: "#F0F0F0",
-              fontSize: 14
+              fontSize: 12
             }
           }
         ],
@@ -370,7 +370,7 @@ export default {
             type: "pie",
             radius: ['40%', '60%'], // 内外半径
             label: {
-              color: '#98A4AF',
+              color: '#F0F0F0',
               fontSize: 12,
               lineHeight: 12,
               formatter: '{b} {d}% \n{c}公顷'
@@ -403,8 +403,8 @@ export default {
             style: {
               text: this.deviceData.totalNumber || '',
               textAlign: "center",
-              fill: "#29E3FD", //文字的颜色
-              fontSize: 28
+              fill: "#f0f0f0", //文字的颜色
+              fontSize: 24
               // fontWeight: 600
             }
           },
@@ -416,7 +416,7 @@ export default {
               text: "总数",
               textAlign: "center",
               fill: "#F0F0F0",
-              fontSize: 14
+              fontSize: 12
             }
           }
         ],
@@ -426,7 +426,7 @@ export default {
             radius: ['60%', '80%'], // 内外半径
             label: {
               show: false,
-              color: '#9FA8B8',
+              color: '#F0F0F0',
               fontSize: 12,
               lineHeight: 14,
               formatter: '{b} {d}%'
@@ -464,8 +464,8 @@ export default {
             style: {
               text: 12,
               textAlign: "center",
-              fill: "#29E3FD", //文字的颜色
-              fontSize: 28
+              fill: "#F0F0F0", //文字的颜色
+              fontSize: 24
               // fontWeight: 600
             }
           },
@@ -477,7 +477,7 @@ export default {
               text: "总数",
               textAlign: "center",
               fill: "#F0F0F0",
-              fontSize: 14
+              fontSize: 12
             }
           }
         ],
@@ -487,7 +487,7 @@ export default {
             radius: ['60%', '80%'], // 内外半径
             label: {
               show: false,
-              color: '#9FA8B8',
+              color: '#F0F0F0',
               fontSize: 12,
               lineHeight: 14,
               formatter: '{b} {d}%'
@@ -560,7 +560,7 @@ export default {
             show: false
           },
           axisLabel: {
-            color: "#9FA8B8",
+            color: "#F0F0F0",
             fontSize: 12
           },
           splitLine: {
@@ -634,7 +634,7 @@ export default {
           ],
           // roseType: 'radius',
           label: {
-            color: '#98A4AF',
+            color: '#F0F0F0',
             fontSize: 12,
             lineHeight: 14,
             formatter: '{b} \n {d}%'
@@ -792,7 +792,7 @@ export default {
         .bottom-value {
           font-size: 0.12rem;
           font-weight: 400;
-          color: #98A4AF;
+          color: #F0F0F0;
         }
         &.area-item {
           .middle-value {

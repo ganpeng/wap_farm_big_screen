@@ -353,10 +353,18 @@ export default {
             { name: "其他", value: data.otherCropArea }
           ],
           label: {
-            color: '#9FA8B8',
+            color: '#F0F0F0',
             fontSize: 12,
             lineHeight: 14,
-            formatter: '{b} {d}%\n{c}公顷'
+            // formatter: '{b} {d}%\n{c}公顷'
+            formatter: (params) => {
+              let {value, name} = params.data;
+              if (value === 0) {
+                return `${name} ${value}`;
+              } else {
+                return `${name} ${params.percent}%\n${value}公顷`;
+              }
+            }
           },
           labelLine: {
             lineStyle: {
@@ -479,8 +487,8 @@ export default {
             style: {
               text: this.deviceData.totalNumber || '',
               textAlign: "center",
-              fill: "#29E3FD", //文字的颜色
-              fontSize: 28,
+              fill: "#F0F0F0", //文字的颜色
+              fontSize: 24,
               fontFamily: 'my-font'
             }
           },
@@ -492,7 +500,7 @@ export default {
               text: "总数",
               textAlign: "center",
               fill: "#F0F0F0",
-              fontSize: 14
+              fontSize: 12
             }
           }
         ],
@@ -501,7 +509,7 @@ export default {
             type: "pie",
             radius: ['40%', '60%'], // 内外半径
             label: {
-              color: '#98A4AF',
+              color: '#F0F0F0',
               fontSize: 12,
               lineHeight: 14,
               formatter: '{b} {d}%\n{c}个'
@@ -619,7 +627,7 @@ export default {
       padding: 0.16rem;
       #area-chart {
         width: 100%;
-        height: 2rem;
+        height: 2.2rem;
       }
       #production-chart {
         width: 100%;

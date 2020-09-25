@@ -8,15 +8,16 @@
     </div>
     <div class="section-one section-item">
       <title-one title="今日已售"></title-one>
+      <!-- <flipper></flipper> -->
       <div class="sale-amount">
         <div class="left-unit amount-item">¥</div>
+        <div class="amount-item"><span class="value my-font">0</span></div>
         <div class="amount-item"><span class="value my-font">6</span></div>
-        <div class="amount-item"><span class="value my-font">6</span></div>
-        <div class="amount-item"><span class="value my-font">6</span></div>
+        <div class="amount-item"><span class="value my-font">9</span></div>
         <div class="split-dot">,</div>
-        <div class="amount-item"><span class="value my-font">6</span></div>
-        <div class="amount-item"><span class="value my-font">6</span></div>
-        <div class="amount-item"><span class="value my-font">6</span></div>
+        <div class="amount-item"><span class="value my-font">7</span></div>
+        <div class="amount-item"><span class="value my-font">3</span></div>
+        <div class="amount-item"><span class="value my-font">0</span></div>
         <div class="right-unit amount-item">元</div>
       </div>
     </div>
@@ -32,7 +33,7 @@
               <th>下单金额(元)</th>
             </tr>
           </thead>
-          <tbody class="bg-icon7">
+          <tbody>
             <tr v-for="(top, index) in _topList" :key="index">
               <td>{{top.area}}</td>
               <td>{{top.vip}}</td>
@@ -41,6 +42,7 @@
             </tr>
           </tbody>
         </table>
+        <div class="table-bg bg-icon7"></div>
       </div>
     </div>
     <div class="section-three section-item">
@@ -114,6 +116,7 @@ import _ from 'lodash';
 import echarts from 'echarts';
 import TitleOne from '@/components/TitleOne';
 import constants from '@/util/constants';
+// import Flipper from './Flipper';
 export default {
   name: 'Sale',
   components: {TitleOne},
@@ -123,24 +126,24 @@ export default {
       topList: constants.topList,
       farmSaleTopList: [
         {
-          farm: '农场',
+          farm: '吉视自营店',
           saleAmount: 40
         },
         {
-          farm: '农场',
-          saleAmount: 40
+          farm: '奢香米业旗舰店',
+          saleAmount: 32
         },
         {
-          farm: '农场',
-          saleAmount: 40
+          farm: '壹田生态农业旗舰店',
+          saleAmount: 30
         },
         {
-          farm: '农场',
-          saleAmount: 40
+          farm: '万昌米业旗舰店',
+          saleAmount: 28
         },
         {
-          farm: '农场',
-          saleAmount: 40
+          farm: '聚成现代农业旗舰店',
+          saleAmount: 25
         }
       ],
       // 图表相关
@@ -312,15 +315,10 @@ export default {
             radius: "60%",
             data: this.saleAmountPieChartData[this.date].data,
             label: {
-              color: "#9FA8B8",
+              color: "#F0F0F0",
               fontSize: 12,
               lineHeight: 14,
               formatter: "{b} {d}%\n{c}万元"
-            },
-            labelLine: {
-              lineStyle: {
-                color: "#3E495E"
-              }
             }
           }
         ]
@@ -352,7 +350,7 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#3E495E'
+              color: '#98A4AF'
             }
           }
         },
@@ -364,13 +362,14 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#3E495E'
+              color: '#98A4AF'
             }
           },
           splitLine: {
             lineStyle: {
+              width: 0.5,
               type: 'dashed',
-              color: ['#3D485D']
+              color: ['#98A4AF']
             }
           }
         },
@@ -521,7 +520,7 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#3E495E'
+              color: '#98A4AF'
             }
           }
         },
@@ -533,13 +532,14 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#3E495E'
+              color: '#98A4AF'
             }
           },
           splitLine: {
             lineStyle: {
+              width: 0.5,
               type: 'dashed',
-              color: ['#3D485D']
+              color: ['#98A4AF']
             }
           }
         },
@@ -600,7 +600,7 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#3E495E'
+              color: '#98A4AF'
             }
           }
         },
@@ -612,13 +612,14 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#3E495E'
+              color: '#98A4AF'
             }
           },
           splitLine: {
             lineStyle: {
+              width: 0.5,
               type: 'dashed',
-              color: ['#3D485D']
+              color: ['#98A4AF']
             }
           }
         },
@@ -671,14 +672,15 @@ export default {
         },
         xAxis: {
           type: "category",
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          data: ["100以下", "100-500", "501-1000", "1000以上"],
           axisLabel: {
             fontSize: 12,
-            color: '#52B5E4'
+            color: '#52B5E4',
+            interval: 0
           },
           axisLine: {
             lineStyle: {
-              color: '#3E495E'
+              color: '#98A4AF'
             }
           }
         },
@@ -690,20 +692,21 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#3E495E'
+              color: '#98A4AF'
             }
           },
           splitLine: {
             lineStyle: {
+              width: 0.5,
               type: 'dashed',
-              color: ['#3D485D']
+              color: ['#98A4AF']
             }
           }
         },
         series: [
           {
             name: '客单价',
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            data: [24, 15, 29, 14],
             type: "bar",
             label: {
               show: true,
@@ -846,6 +849,7 @@ export default {
       }
     }
     .top5-container {
+      position: relative;
       margin-top: 0.1rem;
       table {
         width: 100%;
@@ -855,6 +859,7 @@ export default {
           tr {
             height: 0.35rem;
             th {
+              width: 25%;
               text-align: center;
               font-size: 0.12rem;
               font-weight: 400;
@@ -872,10 +877,10 @@ export default {
               color: #F0F0F0;
             }
             &:nth-child(odd) {
-              background-color: rgba(20, 46, 94, 0.3);
+              background-color: rgba(20, 46, 94, 0.8);
             }
             &:nth-child(even) {
-              background-color: rgba(33, 63, 118, 0.3);
+              background-color: rgba(33, 63, 118, 0.8);
             }
             &:nth-of-type(1) {
               td {
@@ -900,6 +905,13 @@ export default {
             }
           }
         }
+      }
+      .table-bg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: calc(100% - 0.35rem);
       }
     }
     .farm-sale-top5 {
@@ -936,8 +948,7 @@ export default {
             flex: 1;
             font-size: 0.12rem;
             font-weight: 400;
-            color: #E2E0DA;
-            text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+            color: #F0F0F0;
           }
           .sale-value {
             margin-left: 0.1rem;

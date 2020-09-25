@@ -71,7 +71,7 @@ export default {
   left: 0;
   right: 0;
   height: 0.7rem;
-  padding: 0 0.4rem;
+  padding: 0 0.2rem;
   background: #14284B;
   box-shadow: 0 -0.01rem 0.02rem 0 rgba(14, 15, 37, 0.1);
   z-index: 1000;

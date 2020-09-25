@@ -1,21 +1,21 @@
 <template>
   <div ref="slider" class="keen-slider">
+    <div class="right-top-icon">
+      <svg-icon icon-class="new_warning_icon4"></svg-icon>
+    </div>
     <div v-for="(data, index) in dataList" :key="index" class="keen-slider__slide my-slide-item">
       <div class="warning-item">
-        <div class="date">
-          <svg-icon icon-class="new_warning_icon1"></svg-icon>
-          <span class="value">{{data.date}}</span>
-        </div>
         <div class="farm">
           <svg-icon icon-class="new_warning_icon2"></svg-icon>
           <span class="value">{{data.farmName}}</span>
         </div>
+        <div class="date">
+          <svg-icon icon-class="new_warning_icon1"></svg-icon>
+          <span class="value">{{data.date}}</span>
+        </div>
         <div class="desc">
           <svg-icon icon-class="new_warning_icon3"></svg-icon>
           <span v-html="data.description" class="value"></span>
-        </div>
-        <div class="right-top-icon">
-          <svg-icon icon-class="new_warning_icon4"></svg-icon>
         </div>
       </div>
     </div>
@@ -78,13 +78,27 @@ export default {
 }
 </script>
 <style lang="scss">
+.keen-slider {
+  position: relative;
+  .right-top-icon {
+    position: absolute;
+    right: 0.15rem;
+    top: 0.15rem;
+    z-index: 200;
+    .svg-icon {
+      width: 0.4rem;
+      height: 0.38rem;
+    }
+  }
+}
 .my-slide-item {
-  max-height: 1.8rem;
   .warning-item {
     position: relative;
     width: 100%;
-    height: 100%;
-    padding: 0.15rem;
+    // height: 100%;
+    max-height: 1.8rem;
+    padding: 0.15rem 0.15rem 0.2rem 0.15rem;
+    overflow: hidden;
     .date,
     .farm,
     .desc {
@@ -115,15 +129,7 @@ export default {
         font-size: 0.14rem;
       }
     }
-    .right-top-icon {
-      position: absolute;
-      right: 0.15rem;
-      top: 0.15rem;
-      .svg-icon {
-        width: 0.4rem;
-        height: 0.38rem;
-      }
-    }
+
   }
 }
 </style>

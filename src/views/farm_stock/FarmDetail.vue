@@ -99,7 +99,8 @@
             <div class="left">
               <div @click="liveMonitorHandler" :class="['live-btn', month && 'disabled']">
                 实时监控
-                <svg-icon icon-class="wap_real_live_icon"></svg-icon>
+                <svg-icon v-if="month" icon-class="wap_real_live_icon"></svg-icon>
+                <svg-icon v-else icon-class="wap_real_live_disabled_icon"></svg-icon>
               </div>
             </div>
             <div class="right">
@@ -320,14 +321,16 @@ export default {
     },
     async mapInit() {
       try {
+        let mapMarker = require('../../assets/image/map_marker.png');
         this.map = new window.AMap.Map("my-map", {
           // 设置地图的显示样式
           mapStyle: "amap://styles/93f622ecbb8e8a4ed4f6b40967ef3857",
-          zoom: 12,
-          zooms: [7, 21]
+          zoom: 8,
+          zooms: [5, 21]
         });
         let marker = new window.AMap.Marker({
-          icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+          // icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+          icon: mapMarker,
           position: new window.AMap.LngLat(116.39, 39.9)
         });
         this.map.add(marker);
@@ -467,8 +470,8 @@ export default {
             style: {
               text: this.landData.farmLandArea || '',
               textAlign: "center",
-              fill: "#2787F5", //文字的颜色
-              fontSize: 28,
+              fill: "#F0F0F0", //文字的颜色
+              fontSize: 24,
               fontWeight: 600
             }
           },
@@ -479,8 +482,8 @@ export default {
             style: {
               text: "总面积",
               textAlign: "center",
-              fill: "#98A4AF",
-              fontSize: 14
+              fill: "#F0F0F0",
+              fontSize: 12
             }
           }
         ],
@@ -489,7 +492,7 @@ export default {
             type: "pie",
             radius: ['40%', '60%'], // 内外半径
             label: {
-              color: '#9FA8B8',
+              color: '#F0F0F0',
               fontSize: 12,
               lineHeight: 14,
               formatter: '{b} {d}%\n{c}公顷'
@@ -523,7 +526,7 @@ export default {
           },
           axisLabel: {
             fontSize: 12,
-            color: '#98A4AF',
+            color: '#F0F0F0',
             interval: 0
           },
           axisLine: {
@@ -613,9 +616,9 @@ export default {
             fontSize: 12,
             color: "#98A4AF"
           },
-          axisTick: {
-            show: false
-          },
+          // axisTick: {
+          //   show: false
+          // },
           axisLine: {
             lineStyle: {
               // color: '#3E495E'
@@ -634,9 +637,9 @@ export default {
               color: "#98A4AF"
             }
           },
-          axisTick: {
-            show: false
-          },
+          // axisTick: {
+          //   show: false
+          // },
           splitLine: {
             lineStyle: {
               width: 0.5,
@@ -925,10 +928,12 @@ export default {
         margin-top: 0.15rem;
         .left {
           .live-btn {
-            color: #2787f5;
+            // color: #2787f5;
+            color: #f0f0f0;
             font-size: 0.12rem;
             &.disabled {
-              color: #98a4af;
+              // color: #98a4af;
+              color: #2787f5;
             }
           }
         }
@@ -939,7 +944,7 @@ export default {
           font-size: 0.12rem;
           text-align: center;
           border-radius: 0.15rem;
-          border: 1px solid #eeeeee;
+          border: 1px solid #98a4af;
           .month-select {
             position: relative;
             color: #98a4af;
@@ -953,7 +958,7 @@ export default {
               height: 1.3rem;
               padding: 0.1rem 0;
               overflow-y: scroll;
-              background-color: #16193c;
+              background-color: #223E72;
               border-radius: 0.04rem;
               z-index: 200;
               .month-item {
