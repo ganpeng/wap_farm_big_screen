@@ -300,6 +300,7 @@ export default {
       return {
         color: ["#6992DE", "#D6B564", "#DD6F46", "#ECC94C", "#884CDE"],
         tooltip: {
+          show: false,
           trigger: "item",
           position: function(pos, params, dom, rect, size) {
             // 鼠标在左侧时 tooltip 显示到右侧，鼠标在右侧时 tooltip 显示到左侧。
@@ -559,11 +560,11 @@ export default {
                   colorStops: [
                     {
                       offset: 0,
-                      color: "rgba(214,181,100, 0.4)" // 0% 处的颜色
+                      color: "rgba(255, 221, 43, 0.6)" // 0% 处的颜色
                     },
                     {
                       offset: 1,
-                      color: "rgba(214,181,100, 0)" // 100% 处的颜色
+                      color: "rgba(230, 200, 96, 0.06)" // 100% 处的颜色
                     }
                   ],
                   globalCoord: true// 缺省为 false
@@ -639,11 +640,11 @@ export default {
                   colorStops: [
                     {
                       offset: 0,
-                      color: "rgba(32,163,243, 0.6)" // 0% 处的颜色
+                      color: "rgba(0, 255, 207, 0.6)" // 0% 处的颜色
                     },
                     {
                       offset: 1,
-                      color: "rgba(27,143,213, 0)" // 100% 处的颜色
+                      color: "rgba(8, 191, 255, 0.06)" // 100% 处的颜色
                     }
                   ],
                   globalCoord: true// 缺省为 false
@@ -719,11 +720,11 @@ export default {
                 color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
                   {
                     offset: 0,
-                    color: "#1D6CDC"
+                    color: "rgba(25, 120, 255, 1)"
                   },
                   {
                     offset: 1,
-                    color: "#8F95FF"
+                    color: "rgba(149, 143, 255, 1)"
                   }
                 ])
               }

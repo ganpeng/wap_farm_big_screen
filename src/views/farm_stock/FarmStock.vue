@@ -347,6 +347,7 @@ export default {
       return {
         color: ["#6992DE", "#D6B564", "#DD6F46", "#884CDE", "#ECC94C" ],
         tooltip: {
+          show: false,
           trigger: 'item',
           position: function (pos, params, dom, rect, size) {
               // 鼠标在左侧时 tooltip 显示到右侧，鼠标在右侧时 tooltip 显示到左侧。

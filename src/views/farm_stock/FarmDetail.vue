@@ -597,7 +597,7 @@ export default {
     // 传感器图表配置文件
     getSensorChartConfig() {
       return {
-        color: ["#45A1F8"],
+        color: ["rgba(17, 230, 206, 0.6)"],
         tooltip: {
           trigger: "item",
           formatter: params => {
@@ -664,11 +664,11 @@ export default {
                   colorStops: [
                     {
                       offset: 0,
-                      color: "rgba(69,161,248, 0.4)" // 0% 处的颜色
+                      color: "rgba(0, 255, 207, 0.6)" // 0% 处的颜色
                     },
                     {
                       offset: 1,
-                      color: "rgba(69,161,248, 0)" // 100% 处的颜色
+                      color: "rgba(8, 191, 255, 0.06)" // 100% 处的颜色
                     }
                   ],
                   globalCoord: true// 缺省为 false

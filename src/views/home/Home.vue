@@ -615,6 +615,7 @@ export default {
           bottom: 0
         },
         tooltip: {
+          show: false,
           trigger: 'item',
           position: function (pos, params, dom, rect, size) {
               // 鼠标在左侧时 tooltip 显示到右侧，鼠标在右侧时 tooltip 显示到左侧。
