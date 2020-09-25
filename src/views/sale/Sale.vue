@@ -847,6 +847,12 @@ export default {
           align-items: center;
         }
       }
+      .split-dot {
+        display: flex;
+        align-items: flex-end;
+        height: 100%;
+        font-size: 0.34rem;
+      }
     }
     .top5-container {
       position: relative;

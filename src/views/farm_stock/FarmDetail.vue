@@ -324,7 +324,8 @@ export default {
         let mapMarker = require('../../assets/image/map_marker.png');
         this.map = new window.AMap.Map("my-map", {
           // 设置地图的显示样式
-          mapStyle: "amap://styles/93f622ecbb8e8a4ed4f6b40967ef3857",
+          // mapStyle: "amap://styles/93f622ecbb8e8a4ed4f6b40967ef3857",
+          mapStyle: "amap://styles/eca1fb8e1af556e02a441aa401646177",
           zoom: 8,
           zooms: [5, 21]
         });

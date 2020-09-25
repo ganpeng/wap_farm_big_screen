@@ -184,7 +184,21 @@ export default {
     getFarmList() {
       this.$service.getFarmList({pageSize: 100})
         .then((res) => {
-          this.farmList = res.data.list || [];
+          let farmList = res.data.list || [];
+          this.farmList = _.chain(farmList)
+                            .partition((farm) => {
+                                return farm.id === 29;
+                              })
+                            .flattenDeep()
+                            .partition((farm) => {
+                                return farm.id === 15;
+                              })
+                            .flattenDeep()
+                            .partition((farm) => {
+                                return farm.id === 24;
+                              })
+                            .flattenDeep()
+                            .value();
         }).catch((err) => {
           console.log(err);
         });
@@ -194,7 +208,7 @@ export default {
         .then((res) => {
           let warningList = res.data.list || [];
           this.warningList = this.serializeAlertData(warningList);
-          this.$refs.warningCarousel.initKeenSlider(this.warningList);
+          this.$refs.warningCarousel.initKeenSlider(_.take(this.warningList, 8));
         }).catch((err) => {
           console.log(err);
         });

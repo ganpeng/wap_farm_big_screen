@@ -57,25 +57,25 @@ const topList = {
       amount: 200
     },
     {
-      area: '北京',
+      area: '广州',
       vip: '55',
       down: '66',
       amount: 200
     },
     {
-      area: '北京',
+      area: '上海',
       vip: '55',
       down: '66',
       amount: 200
     },
     {
-      area: '北京',
+      area: '深圳',
       vip: '55',
       down: '66',
       amount: 200
     },
     {
-      area: '北京',
+      area: '吉林',
       vip: '55',
       down: '66',
       amount: 200
@@ -88,25 +88,25 @@ const topList = {
       amount: 100
     },
     {
-      area: '北京',
+      area: '广州',
       vip: '25',
       down: '26',
       amount: 100
     },
     {
-      area: '北京',
+      area: '上海',
       vip: '25',
       down: '26',
       amount: 100
     },
     {
-      area: '北京',
+      area: '深圳',
       vip: '25',
       down: '26',
       amount: 100
     },
     {
-      area: '北京',
+      area: '吉林',
       vip: '25',
       down: '26',
       amount: 100
